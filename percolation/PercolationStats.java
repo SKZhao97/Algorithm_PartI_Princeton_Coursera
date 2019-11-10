@@ -9,10 +9,10 @@ import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
 
 public class PercolationStats {
-    private double[] results;
+    private final double[] results;
+    private final double value = 1.96;
 
     public PercolationStats(int n, int trials) {
-        //System.out.println("OK");
         if (n <= 0)
             throw new IllegalArgumentException("n must be larger than 0");
         if (trials <= 0)
@@ -28,7 +28,6 @@ public class PercolationStats {
                     percolation.open(row, col);
                     openedSites++;
                 }
-                //System.out.println(openedSites);
             }
             results[i] = openedSites * 1.0 / (n * n);
         }
@@ -44,11 +43,11 @@ public class PercolationStats {
     }
 
     public double confidenceLo() {
-        return mean() - 1.96 * stddev() / Math.sqrt(results.length);
+        return mean() - value * stddev() / Math.sqrt(results.length);
     }
 
     public double confidenceHi() {
-        return mean() + 1.96 * stddev() / Math.sqrt(results.length);
+        return mean() + value * stddev() / Math.sqrt(results.length);
     }
 
     public static void main(String[] args) {
