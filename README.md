@@ -15,3 +15,7 @@ Implement collinear points pattern recognition algorithms. A point class defines
 ## Assigment 4
 
 Use Priority Queue to solve the 8-puzzle problem.
+
+## Assignment 5
+
+KD Tree
